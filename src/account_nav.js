@@ -31,13 +31,17 @@ import {
   cilHappy,
   cilBasket,
   cilBookmark,
+  cilBank,
+  cilBuilding,
+  cilUserX,
+  cilPizza,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
 
 
 // catch unavailable urls when user logs into the app
-if(["/", "/theme", "/dashboard", "/payment/transaction", "/payment/refunds", "/payment/payouts", "/compliance", "/settings/api-keys", "/bulk-pay", `/bulk-pay/item/${window.location.pathname.split("/")[3]}`, `/bulk-pay/item/${window.location.pathname.split("/")[3]}/`, '/payment-link', '/settings', '/settings/user-management', '/settings/support'].includes(window.location.pathname)){
+if(["/", "/theme", "/dashboard", `/bulk-pay/item/${window.location.pathname.split("/")[3]}`, `/bulk-pay/item/${window.location.pathname.split("/")[3]}/`, '/payment-link', '/settings', '/settings/user-management', '/settings/support'].includes(window.location.pathname)){
   // 
 }
 else{
@@ -50,7 +54,7 @@ const account_nav = [
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
     // badge: {
     //   color: 'info',
     //   text: 'NEW',
@@ -58,99 +62,57 @@ const account_nav = [
   },
   {
     component: CNavGroup,
-    name: 'Payments',
+    name: 'Payroll',
     items: [
       {
         component: CNavItem,
-        name: 'Transaction',
-        to: '/payment/transaction',
-        icon: <CIcon icon={cilTransfer} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Customers',
-        to: '/payment/customers',
+        name: 'Employee',
+        to: '/payroll/employee',
         icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Refunds',
-        to: '/payment/refunds',
-        icon: <CIcon icon={cilReload} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Transaction Splits',
-        to: '/payment/transaction-splits',
+        name: 'Allowance',
+        to: '/payroll/allowance',
         icon: <CIcon icon={cilEco} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Payouts',
-        to: '/payment/payouts',
+        name: 'Deduction',
+        to: '/payroll/deduction',
+        icon: <CIcon icon={cilReload} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'SSNIT',
+        to: '/payroll/ssnit',
+        icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Salary',
+        to: '/payroll/salary',
         icon: <CIcon icon={cilMoney} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Subaccounts',
-        to: '/payment/subaccounts',
-        icon: <CIcon icon={cilTriangle} customClassName="nav-icon" />,
+        name: 'Bank',
+        to: '/payroll/bank',
+        icon: <CIcon icon={cilBuilding} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Dispute',
-        to: '/payment/disputes',
-        icon: <CIcon icon={cilDataTransferUp} customClassName="nav-icon" />,
+        name: 'Department',
+        to: '/payroll/department',
+        icon: <CIcon icon={cilControl} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Payment Link',
-        to: '/payment-link',
-        icon: <CIcon icon={cilDataTransferDown} customClassName="nav-icon" />,
+        name: 'Gender',
+        to: '/payroll/gender',
+        icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
       },
     ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Transfers',
-    items: [
-      {
-        component: CNavItem,
-        name: 'Transfers',
-        to: '/transfer/transfers',
-        icon: <CIcon icon={cilMediaSkipForward} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Recipients',
-        to: '/transfer/recipients',
-        icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Balance',
-        to: '/transfer/balance',
-        icon: <CIcon icon={cilWallet} customClassName="nav-icon" />,
-      },
-    ],
-  },
-  {
-    component: CNavItem,
-    name: 'Compliance',
-    to: '/compliance',
-    icon: <CIcon icon={cilControl} customClassName="nav-icon" />,
-  },
-  // {
-  //   component: CNavItem,
-  //   name: 'Api keys',
-  //   to: '/api-keys',
-  //   icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
-  // },
-  {
-    component: CNavItem,
-    name: 'Bulk Pay',
-    to: '/bulk-pay',
-    icon: <CIcon icon={cilMoodBad} customClassName="nav-icon" />,
   },
   {
     component: CNavGroup,
@@ -158,21 +120,15 @@ const account_nav = [
     items: [
       {
         component: CNavItem,
-        name: 'User management',
-        to: '/settings/user-management',
+        name: 'Users',
+        to: '/settings/users',
         icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'Api keys',
-        to: '/settings/api-keys',
+        name: 'Business',
+        to: '/settings/business',
         icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Support',
-        to: '/settings/support',
-        icon: <CIcon icon={cilBookmark} customClassName="nav-icon" />,
       },
     ],
   },
