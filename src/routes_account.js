@@ -55,6 +55,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 // compliance
 // const Compliance = React.lazy(() => import('./views/pages/Compliance/Compliance'))
 const UserManagement = React.lazy(() => import('./views/pages/UserManagement/UserManagement'))
+const Employee = React.lazy(() => import('./views/pages/employee/Employee'))
 
 const routes = [
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
@@ -105,6 +106,7 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   // { path: '/compliance', name: 'Compliance', element: Compliance },
   { path: '/settings/user-management', name: 'User Management', element: UserManagement },
+  { path: '/payroll/employee', name: 'Employee', element: Employee },
 
   { path: '/apply', name: 'Apply', element: General },
 
