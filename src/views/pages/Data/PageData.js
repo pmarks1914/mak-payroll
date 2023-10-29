@@ -81,7 +81,31 @@ export function getSalary(){
             if(response?.data){loader = "<a></>";}
                 
             <a dangerouslySetInnerHTML={{ __html: loader }}></a>;
-            return response.data.records;
+
+            let tableData = response.data.records;
+            let transformData = Object.keys(tableData).map((post, id) => {
+                return {
+                  "ID": id+1,
+                  "payrollID": tableData[id]?.payrollID,
+                  "net_salary": parseFloat(tableData[id]?.net_salary)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "emp_base_salary": parseFloat(tableData[id]?.emp_base_salary)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "total_allowance": parseFloat(tableData[id]?.total_allowance)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "gross_salary": parseFloat(tableData[id]?.gross_salary)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "total_deductions": parseFloat(tableData[id]?.total_deductions)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "ssnit_relief": parseFloat(tableData[id]?.ssnit_relief)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "taxable_income": parseFloat(tableData[id]?.taxable_income)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "income_tax": parseFloat(tableData[id]?.income_tax)?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').toString(),
+                  "payroll_month": tableData[id]?.payroll_month,
+                  "payroll_year": tableData[id]?.payroll_year,
+                  "employee_name": tableData[id]?.employee?.employee_name,
+                  "employee_phone": tableData[id]?.employee?.employee_phone,
+                  "employee_email": tableData[id]?.employee?.employee_email,
+                  "employee_id": tableData[id]?.employee?.id,
+                  "employee_company_id": tableData[id]?.employee?.company,
+                  "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> <br /> <a> Edit </a>`
+                }
+              })
+            return transformData;
         }
         return
 

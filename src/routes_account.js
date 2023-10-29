@@ -109,6 +109,7 @@ const routes = [
   { path: '/settings/user-management', name: 'User Management', element: UserManagement },
   { path: '/payroll/salary', name: 'Salary', element: Salary },
   { path: '/payroll/employee', name: 'Employee', element: Employee },
+  { path: `/payroll/salary/:id`, name: 'Employee Detail View', element: Salary },
 
   { path: '/apply', name: 'Apply', element: General },
 

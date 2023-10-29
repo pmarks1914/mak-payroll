@@ -10,26 +10,22 @@ let salaryGetAll = getSalary();
 let salaryGetAllInfo = []
 salaryGetAll.list.then(value => salaryGetAllInfo = value)
 
-// setTimeout(() => {
-//   console.log(" >> ", salaryGetAllInfo)
-  
-// }, 1000);
 
-const SalaryDataTables = (dataSource) => {
+const SalaryDataTables = () => {
   
-  const items = [];
-  for (let i = 0; i < 30; i++) {
-    items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});
-  }
+  // const items = [];
+  // for (let i = 0; i < 30; i++) {
+  //   items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});
+  // }
   // const products = salaryGetAllInfo;
 
-  const [products, setProducts] = useState(salaryGetAllInfo);
+  const [products, setProducts] = useState([]);
   
   const columns = [
     {
-      dataField: 'payrollID',
+      dataField: 'ID',
       text: 'Id',
-      filter: textFilter()
+      // filter: textFilter()
     },
     {
       dataField: 'net_salary',
@@ -59,13 +55,23 @@ const SalaryDataTables = (dataSource) => {
       text: 'Deduction',
       filter: textFilter(),
       sort: true
-    }
+    },
+    {
+      dataField: 'action',
+      text: 'Action',
+      formatter: (cell, row) => (
+        <div dangerouslySetInnerHTML={{ __html: cell }} />
+      ),
+    },
   ];
 
   useEffect(() => {
-    
-    setProducts(dataSource?.dataDetails);
-    console.log(" >> ", dataSource?.dataDetails)
+
+    setTimeout(() => {
+      setProducts(salaryGetAllInfo || [])
+      // console.log(" >> ", salaryGetAllInfo)
+    }, 1000);
+
   }, []);
 
   // manage paging

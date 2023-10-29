@@ -15,6 +15,7 @@ import axios from 'axios';
 
 let currentUser = JSON.parse(localStorage.getItem("userDataStore")); 
 
+
 const Salary = () => {
     const [dataDetails, setDataDetails] = useState()
     const [roleData, setRoleData] = useState({})
@@ -24,7 +25,7 @@ const Salary = () => {
         let salaryGetAll = getSalary();
         salaryGetAll.list.then(value => { setDataDetails(value) } )
 
-        // console.log("currentUser ", currentUser)
+        console.log("dataDetails ", dataDetails)
         // let data = '';
         // let config_roles = {
         //     method: 'get',                    
@@ -102,7 +103,7 @@ const Salary = () => {
             {/* open modal for filter date range */}
             {/* <CButton onClick={() => setModal1(!modal1)} icon={cilArrowRight} className="float-end" >Filter</CButton> */}
             <br /><br />
-            <SalaryDataTables dataDetails={dataDetails} />
+            <SalaryDataTables dataSource={dataDetails} />
 
         </div>
     )
