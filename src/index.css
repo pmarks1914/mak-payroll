@@ -58,3 +58,6 @@ div .sidebar{
 div .react-bootstrap-table-page-btns-ul{
     float: right;
 }
+.sr-only{
+    display: none;
+}

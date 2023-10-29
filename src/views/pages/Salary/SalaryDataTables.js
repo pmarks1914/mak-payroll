@@ -3,50 +3,60 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import axios from 'axios';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import { getSalary } from '../Data/PageData';
 
 
-const SalaryDataTables = () => {
+let salaryGetAll = getSalary();
+let salaryGetAllInfo = []
+salaryGetAll.list.then(value => salaryGetAllInfo = value)
+
+// setTimeout(() => {
+//   console.log(" >> ", salaryGetAllInfo)
+  
+// }, 1000);
+
+const SalaryDataTables = (dataSource) => {
   
   const items = [];
   for (let i = 0; i < 30; i++) {
     items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});
   }
-  const products = items;
+  // const products = salaryGetAllInfo;
 
-  // const [products, setProducts] = useState(testData);
+  const [products, setProducts] = useState(salaryGetAllInfo);
   
   const columns = [
     {
-      dataField: 'id',
+      dataField: 'payrollID',
       text: 'Id',
       filter: textFilter()
     },
     {
-      dataField: 'name',
-      text: 'Name',
+      dataField: 'net_salary',
+      text: 'Net Salary',
       filter: textFilter()
     },
     {
-      dataField: 'age',
-      text: 'Age',
-      filter: textFilter(),
-      sort: true
-    },
-    {
-      dataField: 'address',
-      text: 'Address',
-      filter: textFilter(),
-      sort: true
-    },
-    {
-      dataField: 'city',
-      text: 'City',
-      filter: textFilter(),
-      sort: true
-    },
-    {
-      dataField: 'salary',
+      dataField: 'emp_base_salary',
       text: 'Salary',
+      filter: textFilter(),
+      sort: true
+    },
+    {
+      dataField: 'total_allowance',
+      text: 'Allowance',
+      filter: textFilter(),
+      sort: true
+    },
+    {
+      dataField: 'gross_salary',
+      text: 'Gross Salary',
+      filter: textFilter(),
+      sort: true
+    },
+    {
+      dataField: 'total_deductions',
+      text: 'Deduction',
       filter: textFilter(),
       sort: true
     }
@@ -54,9 +64,8 @@ const SalaryDataTables = () => {
 
   useEffect(() => {
     
-    // setProducts([
-
-    // ]);
+    setProducts(dataSource?.dataDetails);
+    console.log(" >> ", dataSource?.dataDetails)
   }, []);
 
   // manage paging
@@ -84,7 +93,7 @@ const SalaryDataTables = () => {
         <div className="col-sm-12 btn btn-info">
           React Bootstrap Table with Searching and Custom Pagination
         </div>
-      </div> */}
+      </div> */} 
       <div className="container" style={{ marginTop: 50 }}>
         <BootstrapTable
           striped
