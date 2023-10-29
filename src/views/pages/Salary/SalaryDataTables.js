@@ -5,7 +5,7 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 
-const EmployeeDataTables = () => {
+const SalaryDataTables = () => {
   
   const items = [];
   for (let i = 0; i < 30; i++) {
@@ -101,4 +101,4 @@ const EmployeeDataTables = () => {
 };
 
 
-export default EmployeeDataTables;
+export default SalaryDataTables;

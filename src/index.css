@@ -48,3 +48,13 @@ div .sidebar{
 .right-gap {
   margin-right: auto;
 }
+/* vertical wrap scrolly */
+.table-container {
+    /* width: max-content;
+     */
+    /* width: 1200px; */
+    /* overflow-y: scroll; Enable vertical scrolling */
+  }  
+div .react-bootstrap-table-page-btns-ul{
+    float: right;
+}
