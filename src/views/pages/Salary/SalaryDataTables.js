@@ -92,7 +92,10 @@ const SalaryDataTables = () => {
     lastPage: 'Last',
     paginationPosition: 'top'
   };
-
+  
+  function funE(){
+    console.log("<<<<   >>>>")
+  }
   return (
     <div className="container table-container">
       {/* <div className="row hdr">

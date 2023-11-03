@@ -1,4 +1,5 @@
 import React from 'react'
+import SalaryDetail from './views/pages/Salary/SalaryDetail'
 import General from './views/pages/UserInfo/General'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -109,10 +110,10 @@ const routes = [
   { path: '/settings/user-management', name: 'User Management', element: UserManagement },
   { path: '/payroll/salary', name: 'Salary', element: Salary },
   { path: '/payroll/employee', name: 'Employee', element: Employee },
-  { path: `/payroll/salary/:id`, name: 'Employee Detail View', element: Salary },
+  { path: `/payroll/salary/:id`, name: 'Employee Detail View', element: SalaryDetail },
 
   { path: '/apply', name: 'Apply', element: General },
-
+ 
   // { path: '/checkout/:id', name: '', element: Checkout }, 
 
 ]

@@ -64,6 +64,7 @@
     "materialui-daterange-picker": "^1.1.92",
     "moment": "^2.29.3",
     "prop-types": "^15.8.1",
+    "puppeteer": "^21.4.1",
     "react": "^18.1.0",
     "react-app-polyfill": "^3.0.0",
     "react-bootstrap-table-next": "^4.0.3",

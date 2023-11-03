@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Result Checker</title>
+</head>
+<body>
+    <h1>Exam Result Checker</h1>
+    <form id="resultForm">
+        <label for="examYear">Exam Year:</label>
+        <input type="text" id="examYear" required><br><br>
+
+        <label for="examNumber">Exam Number:</label>
+        <input type="text" id="examNumber" required><br><br>
+
+        <label for="cardSerial">Card Serial Number:</label>
+        <input type="text" id="cardSerial" required><br><br>
+
+        <label for="cardPin">Card PIN:</label>
+        <input type="text" id="cardPin" required><br><br>
+
+        <label for="examType">Exam Type:</label>
+        <select id="examType" required>
+            <option value="MAY/JUN">MAY/JUN</option>
+            <option value="NOV/DEC">NOV/DEC</option>
+        </select><br><br>
+
+        <input type="submit" value="Check Result">
+    </form>
+
+    <div id="resultContainer" style="display:none;">
+        <h2>Result:</h2>
+        <div id="resultContent"></div>
+    </div>
+
+    <script>
+        document.getElementById("resultForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var examYear = document.getElementById("examYear").value;
+            var examNumber = document.getElementById("examNumber").value;
+            var cardSerial = document.getElementById("cardSerial").value;
+            var cardPin = document.getElementById("cardPin").value;
+            var examType = document.getElementById("examType").value;
+
+            var requestData = {
+                ExamYear: examYear,
+                ExamNumber: examNumber,
+                serial: cardSerial,
+                pin: cardPin,
+                ExamType: examType
+            };
+
+            fetch('https://www.waecdirect.org/DisplayResult.aspx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayResult(data.content);
+                } else {
+                    displayError(data.content.error_message);
+                }
+            })
+            .catch(error => {
+                displayError("Error occurred while processing your request.");
+            });
+        });
+
+        function displayResult(content) {
+            var resultContainer = document.getElementById("resultContainer");
+            var resultContent = document.getElementById("resultContent");
+
+            resultContent.innerHTML = "<strong>Exam Number:</strong> " + content.candidate_number + "<br>" +
+                                    "<strong>Exam Type:</strong> " + content.exam_type + "<br>" +
+                                    "<strong>Exam Center:</strong> " + content.center + "<br><br>" +
+                                    "<strong>Grades:</strong><br>" + formatGrades(content.grades);
+
+            resultContainer.style.display = "block";
+        }
+
+        function displayError(errorMessage) {
+            var resultContainer = document.getElementById("resultContainer");
+            var resultContent = document.getElementById("resultContent");
+
+            resultContent.innerHTML = "<strong>Error:</strong> " + errorMessage;
+            resultContainer.style.display = "block";
+        }
+
+        function formatGrades(grades) {
+            var formattedGrades = "";
+            for (var i = 0; i < grades.length; i++) {
+                var subject = Object.keys(grades[i])[0];
+                var grade = grades[i][subject];
+                formattedGrades += subject + ": " + grade + "<br>";
+            }
+            return formattedGrades;
+        }
+        
+    </script>
+    
+    <!-- <script src="script.js"></script> -->
+
+</body>
+</html>

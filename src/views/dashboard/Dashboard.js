@@ -291,7 +291,7 @@ const Dashboard = () => {
       <CRow className='m-3' >
 
       <CCol sm="12" md="12" lg="12" xl="12">
-          <a href='/apply' className='justify-content-between align-items-center text-white bg-dark rounded-1 p-2' > Quick link to apply </a>
+          <a href='/' className='justify-content-between align-items-center text-white bg-dark rounded-1 p-2' > Quick link </a>
         </CCol>
       </CRow>
       <CRow className='m-3' style={{width: "100%"}}>
@@ -299,7 +299,7 @@ const Dashboard = () => {
         <CCol xs className='mt-2'>
           
           <CCard className="mb-4">            
-            <CCardHeader> Application Overview </CCardHeader>
+            <CCardHeader> Overview </CCardHeader>
             <CCardBody>
 
               <CTable align="middle" className="mb-0 border" hover responsive>
