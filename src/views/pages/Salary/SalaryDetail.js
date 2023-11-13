@@ -22,9 +22,15 @@ import moment from 'moment';
 import { Col, Row } from 'reactstrap';
 
 
+let salaryData = JSON.parse(localStorage.getItem("salaryData")); 
+console.log(salaryData)
+
+
+
+
 const SalaryDetail = () => {
     return (
-        <div className='d-flex justify-content-center' style={{ margin: '0px 20px 0px 0px' }}  >
+        <div className='d-flex justify-content-center' style={{ margin: '0px 0px 0px 0px' }}  >
             {/* <Counter /> */}
 
             {/* <CCard>
@@ -47,14 +53,14 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className="">Name</p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic">Name</p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-                                        jj
+                                    <a >
+                                        {salaryData?.employee_name}
                                     </a>
                                 </Col>
 
@@ -66,14 +72,14 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className=""> Number</p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Phone Number</p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-
+                                    <a >
+                                        {salaryData?.employee_phone}
                                     </a>
                                 </Col>
 
@@ -85,14 +91,14 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className=""> Type</p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Email</p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-
+                                    <a >
+                                        {salaryData?.employee_email}
                                     </a>
                                 </Col>
 
@@ -104,14 +110,14 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className=""> Message </p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Salary</p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-
+                                    <a >
+                                        {salaryData?.emp_base_salary}
                                     </a>
                                 </Col>
 
@@ -123,17 +129,35 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className=""> Status </p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Gross Salary </p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-                                        <CBadge color="" >
-                                            hh
+                                    <a >
+                                        {salaryData?.gross_salary}
+                                    </a>
+                                </Col>
+
+                            </Row>
+
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                            <Row className='mb-0 d-flex'>
+                                <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Net-Salary </p>
+                                    </a>
+                                </Col>
+                                <Col sm="4"></Col>
+                                <Col sm="4">
+                                    <a >
+                                        <CBadge color="secondary" className='fst-italic' >
+                                            {salaryData?.net_salary}
                                         </CBadge>
-
                                     </a>
                                 </Col>
 
@@ -144,32 +168,141 @@ const SalaryDetail = () => {
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="4" md="4" lg="4" xl="4">
-                                    <a style={{ color: "#000" }}>
-                                        <p className=""> Date </p>
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Taxable Income </p>
                                     </a>
                                 </Col>
                                 <Col sm="4"></Col>
                                 <Col sm="4">
-                                    <a style={{ color: "#000" }}>
-                                        hh
-                                        {/* {moment(post?.viewData?.created_at).format('LLLL')} */}
+                                    <a >
+                                            {salaryData?.taxable_income}
                                     </a>
                                 </Col>
 
                             </Row>
                         </CListGroupItem>
+
+                        <CListGroupItem>
+
+                            <Row className='mb-0 d-flex'>
+                                <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                    <a >
+                                        <p  className="fs-6 fst-italic"> Employee Allowance </p>
+                                    </a>
+                                </Col>
+                                <Col sm="4"></Col>
+                                <Col sm="4">
+                                    <a >
+                                            {salaryData?.total_allowance}
+                                    </a>
+                                </Col>
+
+                            </Row>
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                        <Row className='mb-0 d-flex'>
+                            <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                <a >
+                                    <p  className="fs-6 fst-italic"> Total Deduction </p>
+                                </a>
+                            </Col>
+                            <Col sm="4"></Col>
+                            <Col sm="4">
+                                <a >
+                                        {salaryData?.total_deductions}
+                                </a>
+                            </Col>
+
+                        </Row>
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                        <Row className='mb-0 d-flex'>
+                            <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                <a >
+                                    <p  className="fs-6 fst-italic"> SSNIT Relief </p>
+                                </a>
+                            </Col>
+                            <Col sm="4"></Col>
+                            <Col sm="4">
+                                <a >
+                                        {salaryData?.ssnit_relief}
+                                </a>
+                            </Col>
+
+                        </Row>
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                        <Row className='mb-0 d-flex'>
+                            <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                <a >
+                                    <p  className="fs-6 fst-italic"> Income Tax </p>
+                                </a>
+                            </Col>
+                            <Col sm="4"></Col>
+                            <Col sm="4">
+                                <a >
+                                        {salaryData?.income_tax}
+                                </a>
+                            </Col>
+
+                        </Row>
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                        <Row className='mb-0 d-flex'>
+                            <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                <a >
+                                    <p  className="fs-6 fst-italic"> Salary Month </p>
+                                </a>
+                            </Col>
+                            <Col sm="4"></Col>
+                            <Col sm="4">
+                                <a >
+                                        {salaryData?.payroll_month}
+                                </a>
+                            </Col>
+
+                        </Row>
+                        </CListGroupItem>
+
+                        <CListGroupItem>
+
+                        <Row className='mb-0 d-flex'>
+                            <Col sm="4" xm="4" md="4" lg="4" xl="4">
+                                <a >
+                                    <p  className="fs-6 fst-italic"> Salary Year </p>
+                                </a>
+                            </Col>
+                            <Col sm="4"></Col>
+                            <Col sm="4">
+                                <a >
+                                        {salaryData?.payroll_year}
+                                    {/* {moment(post?.viewData?.created_at).format('LLLL')} */}
+                                </a>
+                            </Col>
+
+                        </Row>
+                        </CListGroupItem>
+
 
                         <CListGroupItem>
 
                             <Row className='mb-0 d-flex'>
                                 <Col sm="4" xm="2" md="2" lg="2" xl="2">
-                                    <a style={{ color: "#000" }}>
-                                        {/* <p className=""> Device Info. </p> */}
+                                    <a >
+                                        {/* <p  className="fs-6 fst-italic"> Device Info. </p> */}
                                     </a>
                                 </Col>
                                 <Col sm="8" className='ml-120'>
-                                    <p style={{ color: "#000", textAlign: "center" }} >
-                                        <b> More. </b> <br />
+                                    <p style={{ textAlign: "center" }} className='fst-italic' >
+                                        <b> Currency GHS </b> <br />
 
                                     </p>
 

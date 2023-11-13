@@ -102,7 +102,8 @@ export function getSalary(){
                   "employee_email": tableData[id]?.employee?.employee_email,
                   "employee_id": tableData[id]?.employee?.id,
                   "employee_company_id": tableData[id]?.employee?.company,
-                  "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> `
+                  "action": "View",
+                //   "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> ` 
                 }
               })
             return transformData;

@@ -4,6 +4,7 @@ import axios from 'axios';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { getSalary } from '../Data/PageData';
+import { Badge } from 'reactstrap';
 
 
 let salaryGetAll = getSalary();
@@ -12,7 +13,7 @@ salaryGetAll.list.then(value => salaryGetAllInfo = value)
 
 
 const SalaryDataTables = () => {
-  
+
   // const items = [];
   // for (let i = 0; i < 30; i++) {
   //   items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});
@@ -20,7 +21,7 @@ const SalaryDataTables = () => {
   // const products = salaryGetAllInfo;
 
   const [products, setProducts] = useState([]);
-  
+
   const columns = [
     {
       dataField: 'ID',
@@ -59,14 +60,19 @@ const SalaryDataTables = () => {
     {
       dataField: 'action',
       text: 'Action',
+      events: {
+        onClick: (e, column, columnIndex, rowIndex) => {
+          funE(e, column, columnIndex, rowIndex);
+        },
+      },
       formatter: (cell, row) => (
-        <div dangerouslySetInnerHTML={{ __html: cell }} />
+        <Badge color='primary' className='pointer'> {cell} </Badge>
       ),
+
     },
   ];
 
   useEffect(() => {
-
     setTimeout(() => {
       setProducts(salaryGetAllInfo || [])
       // console.log(" >> ", salaryGetAllInfo)
@@ -92,9 +98,17 @@ const SalaryDataTables = () => {
     lastPage: 'Last',
     paginationPosition: 'top'
   };
-  
-  function funE(){
-    console.log("<<<<   >>>>")
+
+  function funE(e, column, columnIndex, rowIndexData) {
+
+    localStorage.setItem("salaryData", JSON.stringify(rowIndexData));
+
+    setTimeout(()=>{
+      window.location.href = '/payroll/salary/' + rowIndexData?.payrollID?.toString()
+    }, 1000)
+
+    // console.log("<<<<   >>>>", '/payroll/salary/'+rowIndexData?.payrollID?.toString()  )
+
   }
   return (
     <div className="container table-container">
@@ -102,7 +116,8 @@ const SalaryDataTables = () => {
         <div className="col-sm-12 btn btn-info">
           React Bootstrap Table with Searching and Custom Pagination
         </div>
-      </div> */} 
+      </div> */}
+      
       <div className="container" style={{ marginTop: 50 }}>
         <BootstrapTable
           striped

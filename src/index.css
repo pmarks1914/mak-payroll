@@ -61,3 +61,6 @@ div .react-bootstrap-table-page-btns-ul{
 .sr-only{
     display: none;
 }
+.pointer{
+    cursor: pointer;
+}
