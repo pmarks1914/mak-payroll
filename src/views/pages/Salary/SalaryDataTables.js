@@ -29,6 +29,11 @@ const SalaryDataTables = () => {
       // filter: textFilter()
     },
     {
+      dataField: 'employee_name',
+      text: 'Employee Name',
+      filter: textFilter()
+    },
+    {
       dataField: 'net_salary',
       text: 'Net Salary',
       filter: textFilter()
