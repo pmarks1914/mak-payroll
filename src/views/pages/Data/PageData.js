@@ -138,3 +138,81 @@ export function getSalary(){
     }
 }
 
+export function getEmployee(){
+
+    let data = '';
+    let config_salary = {
+        method: 'get',
+        url:  process.env.REACT_APP_BASE_API + "/api/employee/employeeDetails.php",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + userData?.access
+        },
+        data: data
+    };
+
+    let dataSource = axios(config_salary).then(response => {
+      // console.log("data ==", response);
+        <a dangerouslySetInnerHTML={{ __html: loader }}></a>
+        if (response.status === 200) {
+            //   console.log("data source==", response.data.records);
+            if(response?.data){loader = "<a></>";}
+                
+            <a dangerouslySetInnerHTML={{ __html: loader }}></a>;
+
+            let tableData = response.data.records;
+            let transformData = Object.keys(tableData).map((post, id) => {
+                return {
+                  "ID": id+1,
+                  "payrollID": tableData[id]?.payrollID,
+                  "employee_id": tableData[id]?.id,
+                  "employee_name": tableData[id]?.employee_name,
+                  "employee_phone": tableData[id]?.employee_phone,
+                  "employee_email": tableData[id]?.employee_email,
+                  "employee_gender": tableData[id]?.employee_gender,
+                  "employee_city": tableData[id]?.employee_city,
+                  "employee_address": tableData[id]?.employee_address,
+                  "employee_country": tableData[id]?.employee_country,
+                  "created_at": tableData[id]?.created_at,
+                  "updated_at": tableData[id]?.updated_at,
+                  "employee_id": tableData[id]?.id,
+                  "business_name": tableData[id]?.company?.business_name,
+                  "business_email": tableData[id]?.company?.business_email,
+                  "business_phone": tableData[id]?.company?.business_phone,
+                  "business_address": tableData[id]?.company?.business_address,
+                  "business_desc": tableData[id]?.company?.business_desc,
+                  "action": "View",
+                //   "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> ` 
+                }
+              })
+            return transformData;
+        }
+        return
+
+    }).catch(function (error) {
+
+        if (error.response) {
+            // // console.log("==");
+            /*
+            * The request was made and the server responded with a
+            * status code that falls out of the range of 2xx
+            */
+
+        } else if (error.request) {
+            /*
+            * The request was made but no response was received, `error.request`
+            * is an instance of XMLHttpRequest in the browser and an instance
+            * of http.ClientRequest in Node.js
+            */
+
+        } else {
+            // Something happened in setting up the request and triggered an Error
+
+        }
+    }
+    );
+    
+    return {
+        "list": dataSource
+    }
+}
