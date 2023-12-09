@@ -3,11 +3,17 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import axios from 'axios';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import { getEmployee } from '../Data/PageData';
 
+let employeeGetAll = getEmployee();
 
-const EmployeeDataTables = () => {
-  
-  const items = [];
+const EmployeeDataTables = (dataDetails) => {
+  const [employeeGetAllInfo, setEmployeeGetAllInfo] = useState([])
+
+  employeeGetAll?.list?.then(value => setEmployeeGetAllInfo(value) )
+  console.log(" >> ", employeeGetAllInfo)
+
+  const items = []; 
   for (let i = 0; i < 30; i++) {
     items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});
   }
@@ -17,36 +23,48 @@ const EmployeeDataTables = () => {
   
   const columns = [
     {
-      dataField: 'id',
+      dataField: 'ID',
       text: 'Id',
       filter: textFilter()
     },
     {
-      dataField: 'name',
+      dataField: 'employee_name',
       text: 'Name',
       filter: textFilter()
     },
     {
-      dataField: 'age',
-      text: 'Age',
+      dataField: 'employee_email',
+      text: 'Email',
       filter: textFilter(),
       sort: true
     },
     {
-      dataField: 'address',
+      dataField: 'employee_phone',
+      text: 'Phone',
+      filter: textFilter(),
+      sort: true
+    },
+    {
+      dataField: 'employee_address',
       text: 'Address',
       filter: textFilter(),
       sort: true
     },
     {
-      dataField: 'city',
+      dataField: 'employee_city',
       text: 'City',
       filter: textFilter(),
       sort: true
     },
     {
-      dataField: 'salary',
-      text: 'Salary',
+      dataField: 'employee_country',
+      text: 'Country',
+      filter: textFilter(),
+      sort: true
+    },
+    {
+      dataField: 'business_address',
+      text: 'Business',
       filter: textFilter(),
       sort: true
     }
@@ -66,7 +84,7 @@ const EmployeeDataTables = () => {
       { text: '5', value: 5 },
       { text: '10', value: 10 },
       { text: '50', value: 50 },
-      { text: 'All', value: products.length }
+      { text: 'All', value: employeeGetAllInfo.length }
     ],
     sizePerPage: 10,
     pageStartIndex: 1,
@@ -90,7 +108,7 @@ const EmployeeDataTables = () => {
           striped
           hover
           keyField='id'
-          data={products}
+          data={employeeGetAllInfo}
           columns={columns}
           filter={filterFactory()}
           pagination={paginationFactory(options)}

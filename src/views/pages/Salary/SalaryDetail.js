@@ -23,7 +23,7 @@ import { Col, Row } from 'reactstrap';
 
 
 let salaryData = JSON.parse(localStorage.getItem("salaryData")); 
-console.log(salaryData)
+// console.log(salaryData)
 
 
 

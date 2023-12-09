@@ -80,7 +80,7 @@ const SalaryDataTables = () => {
   useEffect(() => {
     setTimeout(() => {
       setProducts(salaryGetAllInfo || [])
-      // console.log(" >> ", salaryGetAllInfo)
+      // console.log(" >> ", employeeGetAllInfo)
     }, 1000);
 
   }, []);
@@ -92,7 +92,7 @@ const SalaryDataTables = () => {
       { text: '5', value: 5 },
       { text: '10', value: 10 },
       { text: '50', value: 50 },
-      { text: 'All', value: products.length }
+      { text: 'All', value: salaryGetAllInfo.length }
     ],
     sizePerPage: 10,
     pageStartIndex: 1,
@@ -128,7 +128,7 @@ const SalaryDataTables = () => {
           striped
           hover
           keyField='id'
-          data={products}
+          data={salaryGetAllInfo}
           columns={columns}
           filter={filterFactory()}
           pagination={paginationFactory(options)}

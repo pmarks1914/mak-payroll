@@ -155,16 +155,16 @@ export function getEmployee(){
       // console.log("data ==", response);
         <a dangerouslySetInnerHTML={{ __html: loader }}></a>
         if (response.status === 200) {
-            //   console.log("data source==", response.data.records);
+            //   console.log("data source==", response.data);
             if(response?.data){loader = "<a></>";}
                 
             <a dangerouslySetInnerHTML={{ __html: loader }}></a>;
 
             let tableData = response.data.records;
             let transformData = Object.keys(tableData).map((post, id) => {
-                return {
+                // console.log(" >> ", tableData[id]?.id)
+                return { 
                   "ID": id+1,
-                  "payrollID": tableData[id]?.payrollID,
                   "employee_id": tableData[id]?.id,
                   "employee_name": tableData[id]?.employee_name,
                   "employee_phone": tableData[id]?.employee_phone,
@@ -185,6 +185,7 @@ export function getEmployee(){
                 //   "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> ` 
                 }
               })
+            // console.log("data transformData==", transformData);
             return transformData;
         }
         return
@@ -211,7 +212,6 @@ export function getEmployee(){
         }
     }
     );
-    
     return {
         "list": dataSource
     }
