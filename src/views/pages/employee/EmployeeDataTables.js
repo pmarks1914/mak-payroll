@@ -4,6 +4,7 @@ import axios from 'axios';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { getEmployee } from '../Data/PageData';
+import { Badge } from 'reactstrap';
 
 let employeeGetAll = getEmployee();
 
@@ -25,7 +26,7 @@ const EmployeeDataTables = (dataDetails) => {
     {
       dataField: 'ID',
       text: 'Id',
-      filter: textFilter()
+      // filter: textFilter()
     },
     {
       dataField: 'employee_name',
@@ -67,7 +68,20 @@ const EmployeeDataTables = (dataDetails) => {
       text: 'Business',
       filter: textFilter(),
       sort: true
-    }
+    },
+    {
+      dataField: 'action',
+      text: 'Action',
+      events: {
+        onClick: (e, column, columnIndex, rowIndex) => {
+          funE(e, column, columnIndex, rowIndex);
+        },
+      },
+      formatter: (cell, row) => (
+        <Badge color='primary' className='pointer'> {cell} </Badge>
+      ),
+
+    },
   ];
 
   useEffect(() => {
@@ -96,6 +110,18 @@ const EmployeeDataTables = (dataDetails) => {
     paginationPosition: 'top'
   };
 
+
+  function funE(e, column, columnIndex, rowIndexData) {
+
+    localStorage.setItem("employeeData", JSON.stringify(rowIndexData));
+
+    setTimeout(()=>{
+      window.location.href = '/payroll/employee/' + rowIndexData?.employee_id?.toString()
+    }, 1000)
+
+    // console.log("<<<<   >>>>", rowIndexData  )
+
+  }
   return (
     <div className="container table-container">
       {/* <div className="row hdr">
@@ -103,6 +129,7 @@ const EmployeeDataTables = (dataDetails) => {
           React Bootstrap Table with Searching and Custom Pagination
         </div>
       </div> */}
+      
       <div className="container" style={{ marginTop: 50 }}>
         <BootstrapTable
           striped

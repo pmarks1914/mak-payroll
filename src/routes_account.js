@@ -1,4 +1,5 @@
 import React from 'react'
+import EmployeeDetail from './views/pages/employee/EmployeeDetail'
 import SalaryDetail from './views/pages/Salary/SalaryDetail'
 import General from './views/pages/UserInfo/General'
 
@@ -108,10 +109,12 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   // { path: '/compliance', name: 'Compliance', element: Compliance },
   { path: '/settings/user-management', name: 'User Management', element: UserManagement },
-  { path: '/payroll/salary', name: 'Salary', element: Salary },
+  { path: '/payroll/salary', name: 'Salary', element: Salary},
+  { path: `/payroll/salary/:id`, name: 'Employee Salary Detail View', element: SalaryDetail },
   { path: '/payroll/employee', name: 'Employee', element: Employee },
-  { path: `/payroll/salary/:id`, name: 'Employee Detail View', element: SalaryDetail },
+  { path: `/payroll/employee/:id`, name: 'Employee Detail View', element: EmployeeDetail },
 
+  
   { path: '/apply', name: 'Apply', element: General },
  
   // { path: '/checkout/:id', name: '', element: Checkout }, 

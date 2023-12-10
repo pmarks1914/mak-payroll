@@ -102,6 +102,10 @@ export function getSalary(){
                   "employee_email": tableData[id]?.employee?.employee_email,
                   "employee_id": tableData[id]?.employee?.id,
                   "employee_company_id": tableData[id]?.employee?.company,
+                  "employee_country": tableData[id]?.employee?.employee_country,
+                  "employee_address": tableData[id]?.employee?.employee_address,
+                  "employee_gender": tableData[id]?.employee?.employee_gender,
+                  "employee_city": tableData[id]?.employee?.employee_city,
                   "action": "View",
                 //   "action": `<a href= ${'/payroll/salary/'}${tableData[id]?.payrollID} > View </a> ` 
                 }
