@@ -288,12 +288,11 @@ const Dashboard = () => {
 
       <ToastContainer />
       
-      <CRow className='m-3' >
-
+      {/* <CRow className='m-3' >
       <CCol sm="12" md="12" lg="12" xl="12">
           <a href='/' className='justify-content-between align-items-center text-white bg-dark rounded-1 p-2' > Quick link </a>
         </CCol>
-      </CRow>
+      </CRow> */}
       <CRow className='m-3' style={{width: "100%"}}>
 
         <CCol xs className='mt-2'>
@@ -309,7 +308,7 @@ const Dashboard = () => {
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
                     <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Programme</CTableHeaderCell>
+                    {/* <CTableHeaderCell className="text-center">Programme</CTableHeaderCell> */}
                     <CTableHeaderCell>Status</CTableHeaderCell>
                     <CTableHeaderCell>Action</CTableHeaderCell>
                   </CTableRow>
@@ -326,10 +325,6 @@ const Dashboard = () => {
                           <span>{'New '}</span> | Applied:{' '}  
                           {moment(item?.updated_at).format("YYYY-MM-DD")}
                         </div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        {item?.program?.department}
-                        {/* <CIcon size="xl" icon={item.country.flag} title={item.country.name} /> */}
                       </CTableDataCell>
                       <CTableDataCell>
                         <div className="clearfix">

@@ -102,7 +102,7 @@ const Salary = () => {
         <div>
             {/* open modal for filter date range */}
             {/* <CButton onClick={() => setModal1(!modal1)} icon={cilArrowRight} className="float-end" >Filter</CButton> */}
-            <br /><br />
+            {/* <br /><br /> */}
             <SalaryDataTables dataSource={dataDetails} />
 
         </div>

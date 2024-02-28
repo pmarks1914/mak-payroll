@@ -22,7 +22,6 @@ import { Col, Row } from 'reactstrap'
 import Box from '@mui/material/Box';
 
 import avatar9 from '../../../assets/brand/logo.svg'
-import { Select } from 'antd'
 import { FormControl } from '@mui/base'
 // import swal from 'sweetalert2'
 
@@ -94,6 +93,7 @@ const Login = () => {
             timeLogout: new Date(new Date().getTime() + counter),
             counter: counter,
             email: response?.data?.email,
+            id: response?.data?.id,
           };
 
           // console.log((JSON.stringify(userData)));
@@ -215,7 +215,7 @@ const Login = () => {
                           />
 
                         </Box>
-                        
+
                       </div>
                     </Col>
                     <p className="text-medium-emphasis mb-0">{loginError}</p>

@@ -8,12 +8,13 @@ import { Badge } from 'reactstrap';
 
 
 let salaryGetAll = getSalary();
-let salaryGetAllInfo = []
-salaryGetAll.list.then(value => salaryGetAllInfo = value)
-
 
 const SalaryDataTables = () => {
 
+  const [salaryGetAllInfo, setSalaryGetAllInfo] = useState([])
+
+  salaryGetAll?.list?.then(value => setSalaryGetAllInfo(value) )
+  // console.log(" >> ", salaryGetAllInfo)
   // const items = [];
   // for (let i = 0; i < 30; i++) {
   //   items.push( {id: i+1, name: `Kofi ${i}`, age: 21+i+1, address: `23 WY ${i}`, city: "Accra", salary: ""});

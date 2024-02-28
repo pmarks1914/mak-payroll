@@ -70,68 +70,68 @@ const account_nav = [
         to: '/payroll/employee',
         icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
       },
-      {
-        component: CNavItem,
-        name: 'Allowance',
-        to: '/payroll/allowance',
-        icon: <CIcon icon={cilEco} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Deduction',
-        to: '/payroll/deduction',
-        icon: <CIcon icon={cilReload} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'SSNIT',
-        to: '/payroll/ssnit',
-        icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
-      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Allowance',
+      //   to: '/payroll/allowance',
+      //   icon: <CIcon icon={cilEco} customClassName="nav-icon" />,
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Deduction',
+      //   to: '/payroll/deduction',
+      //   icon: <CIcon icon={cilReload} customClassName="nav-icon" />,
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'SSNIT',
+      //   to: '/payroll/ssnit',
+      //   icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
+      // },
       {
         component: CNavItem,
         name: 'Salary',
         to: '/payroll/salary',
         icon: <CIcon icon={cilMoney} customClassName="nav-icon" />,
       },
-      {
-        component: CNavItem,
-        name: 'Bank',
-        to: '/payroll/bank',
-        icon: <CIcon icon={cilBuilding} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Department',
-        to: '/payroll/department',
-        icon: <CIcon icon={cilControl} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Gender',
-        to: '/payroll/gender',
-        icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
-      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Bank',
+      //   to: '/payroll/bank',
+      //   icon: <CIcon icon={cilBuilding} customClassName="nav-icon" />,
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Department',
+      //   to: '/payroll/department',
+      //   icon: <CIcon icon={cilControl} customClassName="nav-icon" />,
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Gender',
+      //   to: '/payroll/gender',
+      //   icon: <CIcon icon={cilUserX} customClassName="nav-icon" />,
+      // },
     ],
   },
-  {
-    component: CNavGroup,
-    name: 'Settings',
-    items: [
-      {
-        component: CNavItem,
-        name: 'Users',
-        to: '/settings/users',
-        icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
-      },
-      {
-        component: CNavItem,
-        name: 'Business',
-        to: '/settings/business',
-        icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
-      },
-    ],
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: 'Settings',
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: 'Users',
+  //       to: '/settings/users',
+  //       icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
+  //     },
+      // {
+      //   component: CNavItem,
+      //   name: 'Business',
+      //   to: '/settings/business',
+      //   icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
+      // },
+  //   ],
+  // },
   
 ]
 
